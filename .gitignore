@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Extracted faces
+embedding/extracted_faces/
+extracted_faces/
+detection/detected_faces/
+detected_faces/
+storage/images/
+images/
+testing/tested_faces/
+tested_faces/
+testing/tested_images_embedding/
+tested_images_embedding/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+

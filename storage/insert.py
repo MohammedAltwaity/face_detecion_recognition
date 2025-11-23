@@ -94,6 +94,27 @@ class FaceInsert:
         self.conn.commit()
         return cursor.lastrowid
     
+    def update_metadata(self, person_id: int, metadata: Dict) -> bool:
+        """
+        Update metadata for an existing person.
+        
+        Args:
+            person_id: ID of the person to update
+            metadata: Dictionary with updated metadata
+            
+        Returns:
+            True if person was updated, False if not found
+        """
+        cursor = self.conn.cursor()
+        metadata_str = json.dumps(metadata) if metadata else None
+        cursor.execute("""
+            UPDATE persons 
+            SET metadata = ?
+            WHERE id = ?
+        """, (metadata_str, person_id))
+        self.conn.commit()
+        return cursor.rowcount > 0
+    
     def close(self):
         """Close the database connection."""
         self.conn.close()

@@ -120,6 +120,27 @@ class FaceSearch:
         
         return results
     
+    def get_by_id(self, person_id: int) -> Optional[Tuple[int, str, Optional[Dict], str]]:
+        """
+        Retrieve a specific person by ID with all information.
+        
+        Args:
+            person_id: ID of the person to retrieve
+            
+        Returns:
+            Tuple of (person_id, name, metadata, created_at) or None if not found
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT id, name, metadata, created_at FROM persons WHERE id = ?", (person_id,))
+        row = cursor.fetchone()
+        
+        if row is None:
+            return None
+        
+        person_id, name, metadata_str, created_at = row
+        metadata = json.loads(metadata_str) if metadata_str else None
+        return (person_id, name, metadata, created_at)
+    
     def delete(self, person_id: int) -> bool:
         """
         Delete a person from the database.
