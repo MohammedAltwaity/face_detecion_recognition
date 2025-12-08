@@ -1,0 +1,16 @@
+# Requirements for Raspberry Pi - update5.py with RetinaFace
+# Install with: pip install -r requirements_pi.txt
+
+# Core dependencies
+flask>=2.3.0
+picamera2>=0.3.12
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# RetinaFace/InsightFace dependencies
+insightface>=0.7.3
+onnxruntime>=1.15.0
+
+# Additional dependencies that may be needed
+Pillow>=10.0.0
+
